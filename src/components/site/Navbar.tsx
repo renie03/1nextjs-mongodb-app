@@ -9,7 +9,7 @@ import { links } from "@/lib/constants";
 
 const Navbar = async () => {
   const session = await auth();
-  console.log(session);
+  // console.log(session);
 
   return (
     <div className="h-20 flex justify-between items-center sticky top-0 bg-bg z-50">
