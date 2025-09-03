@@ -1,8 +1,6 @@
 "use client";
 import { useTheme } from "next-themes";
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import { FiMoon, FiSun } from "react-icons/fi";
 
 const DarkModeToggle = () => {
   const [mounted, setMounted] = useState(false);
@@ -10,16 +8,20 @@ const DarkModeToggle = () => {
 
   useEffect(() => setMounted(true), []);
 
-  if (!mounted)
-    return <div className="border rounded-full p-[7px] border-transparent" />;
+  if (!mounted) return <div className="w-12.5 h-7 bg-transparent" />;
 
   return (
     <button
+      className="flex items-center justify-between p-0.5 w-12.5 h-7 border border-gray-600 rounded-full cursor-pointer relative"
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
     >
-      {
-        mounted ? resolvedTheme === "dark" ? <FiSun /> : <FiMoon /> : <FiMoon /> // safe default
-      }
+      <div className="text-sm">🌙</div>
+      <div className="text-sm">🔆</div>
+      <div
+        className={`w-5 h-5 bg-green-500 rounded-full absolute transition-all duration-300 ease-in-out ${
+          resolvedTheme === "dark" ? "translate-x-0" : "translate-x-6"
+        }`}
+      />
     </button>
   );
 };
